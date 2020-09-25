@@ -1,7 +1,4 @@
-# Java web training
+# Book store
 
-Reopistorio para pruebas Java EE web
+Repositorio para implementación de librería virtual como parte del proyecto del curso DESARROLLO WEB INTEGRADO
 
-## Enlaces de interes
-
-- [UAM MX](http://www.cua.uam.mx/pdfs/revistas_electronicas/libros-electronicos/2017/java/Java.pdf)
