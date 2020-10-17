@@ -2,6 +2,14 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="books-storePU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>model.entities.Estado</class>
+    <class>model.entities.Comentario</class>
+    <class>model.entities.Genero</class>
+    <class>model.entities.Usuario</class>
+    <class>model.entities.Libro</class>
+    <class>model.entities.Autor</class>
+    <class>model.entities.Tipolista</class>
+    <class>model.entities.Lista</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://192.168.0.6:3306/testdb?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
