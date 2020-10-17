@@ -1,25 +1,129 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
-        <title>Primera prueba demo</title>
+        
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="description" content=""/>
+        <meta name="author" content=""/>
+
+        <!-- Bootstrap core CSS -->
+        <!--<h:outputScript name="bootstrap-4.5.3/js/bootstrap.js" />-->
+        
+        <h:outputStylesheet name="bootstrap-4.5.3/css/bootstrap.css"/>
+        <h:outputStylesheet name="styles/style.css"/>
+
+        <title>Book store</title>
+        <!-- Custom styles for this template -->
+        
     </h:head>
     <h:body>
-        <h:dataTable 
-            value="#{authorController.authors}" 
-            var="c"
-        >
-            <h:column>
-                <f:facet name="header">Author ID</f:facet>
-                #{c.id}
-            </h:column>
-            <h:column>
-                <f:facet name="header">Name</f:facet>
-                #{c.name}
-            </h:column>
-        </h:dataTable>
+
+        <!-- Page Preloder -->
+	<div id="preloder" style="display: none;">
+		<div class="loader" style="display: none;"></div>
+	</div>
+
+	<!-- Header section -->
+	<header class="header-section">
+            <div class="header-top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-2 text-center text-lg-left">
+                            <!-- logo -->
+                            <a href="/index.html" class="site-logo">
+                                <!--<img src="./BookStore _ eCommerce_files/logo.png" alt="" />-->
+                                <h:graphicImage url="resources/images/logo.png" />
+                            </a>
+                        </div>
+                        <div class="col-xl-6 col-lg-5">
+                            <form class="header-search-form">
+                                <input type="text" placeholder="Buscar en BookStore ...." />
+                                <button><i class="flaticon-search"></i></button>
+                            </form>
+                        </div>
+                        <div class="col-xl-4 col-lg-5">
+                            <div class="user-panel">
+                                <div class="up-item">
+                                    <i class="flaticon-profile"></i>
+                                    <a href="/#">Ingresar</a> o <a href="/#">Crear cuenta</a>
+                                </div>
+                                <div class="up-item">
+                                    <div class="shopping-card">
+                                        <i class="flaticon-bag"></i>
+                                        <span>0</span>
+                                    </div>
+                                    <a href="/#">Shopping Cart</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <nav class="main-navbar">
+                <div class="container"><div class="slicknav_menu"><a href="/#" aria-haspopup="true" role="button" tabindex="0" class="slicknav_btn slicknav_collapsed" style="outline: none;"><span class="slicknav_menutxt">MENU</span><span class="slicknav_icon"><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span></span></a><ul class="slicknav_nav slicknav_hidden" style="display: none;" aria-hidden="true" role="menu">
+                                <li class="slicknav_collapsed slicknav_parent"><a href="/#" role="menuitem" aria-haspopup="true" tabindex="-1" class="slicknav_item slicknav_row" style="outline: none;"><a href="/#" tabindex="-1">Libros</a>
+                                        <span class="slicknav_arrow"><i class="flaticon-right-arrow"></i></span></a><ul class="sub-menu slicknav_hidden" role="menu" style="display: none;" aria-hidden="true">
+                                                <li><a href="/#" role="menuitem" tabindex="-1">Literatura</a></li>
+                                                <li><a href="/#" role="menuitem" tabindex="-1">Cuentos infantiles</a></li>
+                                                <li><a href="/#" role="menuitem" tabindex="-1">Formativos</a></li>
+                                                <li><a href="/#" role="menuitem" tabindex="-1">Humanidades</a></li>
+                                        </ul>
+                                </li>
+                                <li><a href="/#" role="menuitem" tabindex="-1">eBooks</a></li>
+                                <li><a href="/#" role="menuitem" tabindex="-1">Nuevos</a></li>
+                                <li><a href="/#" role="menuitem" tabindex="-1">Recomendados</a></li>
+                                <li><a href="/#" role="menuitem" tabindex="-1">Más vendidos</a></li>
+                                <li class="slicknav_collapsed slicknav_parent"><a href="/#" role="menuitem" aria-haspopup="true" tabindex="-1" class="slicknav_item slicknav_row" style="outline: none;"><a href="/#" tabindex="-1">Otros</a>
+                                        <span class="slicknav_arrow"><i class="flaticon-right-arrow"></i></span></a><ul class="sub-menu slicknav_hidden" role="menu" style="display: none;" aria-hidden="true">
+                                                <li><a href="/#" role="menuitem" tabindex="-1">Product Page</a></li>
+                                                <li><a href="/#" role="menuitem" tabindex="-1">Category Page</a></li>
+                                                <li><a href="/#" role="menuitem" tabindex="-1">Cart Page</a></li>
+                                                <li><a href="/#" role="menuitem" tabindex="-1">Checkout Page</a></li>
+                                                <li><a href="/#" role="menuitem" tabindex="-1">Contact Page</a></li>
+                                        </ul>
+                                </li>
+                        </ul></div>
+                        <!-- menu -->
+                        <ul class="main-menu">
+                                <li><a href="/#">Libros</a>
+                                        <ul class="sub-menu">
+                                                <li><a href="/#">Literatura</a></li>
+                                                <li><a href="/#">Cuentos infantiles</a></li>
+                                                <li><a href="/#">Formativos</a></li>
+                                                <li><a href="/#">Humanidades</a></li>
+                                        </ul>
+                                </li>
+                                <li><a href="/#">eBooks</a></li>
+                                <li><a href="/#">Nuevos</a></li>
+                                <li><a href="/#">Recomendados</a></li>
+                                <li><a href="/#">Más vendidos</a></li>
+                                <li><a href="/#">Otros</a>
+                                        <ul class="sub-menu">
+                                                <li><a href="/#">Product Page</a></li>
+                                                <li><a href="/#">Category Page</a></li>
+                                                <li><a href="/#">Cart Page</a></li>
+                                                <li><a href="/#">Checkout Page</a></li>
+                                                <li><a href="/#">Contact Page</a></li>
+                                        </ul>
+                                </li>
+                        </ul>
+                </div>
+            </nav>
+    </header>
+    <!-- Header section end -->
+
+        
+        
+        <!-- jQuery and JS bundle w/ Popper.js -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+        
+        <h:outputScript name="bootstrap-4.5.3/js/bootstrap.min.js"/>
     </h:body>
 </html>
 
