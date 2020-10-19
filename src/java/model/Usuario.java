@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.entities;
+package model;
 
+import model.Lista;
+import model.Comentario;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;

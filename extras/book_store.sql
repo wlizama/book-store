@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-10-2020 a las 08:20:50
+-- Tiempo de generación: 18-10-2020 a las 20:22:25
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.2.33
 
@@ -83,9 +83,11 @@ CREATE TABLE `libro` (
   `descripcion` text NOT NULL,
   `fecha_publicacion` date NOT NULL,
   `precio` decimal(18,2) NOT NULL,
-  `id_genero` int(11) NOT NULL,
+  `url_portada` text NOT NULL,
+  `url_ubicacion` varchar(500) NOT NULL,
+  `id_libro_genero` int(11) NOT NULL,
   `id_estado` int(11) NOT NULL,
-  `id_autor` int(11) NOT NULL
+  `id_libro_autor` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -173,7 +175,9 @@ ALTER TABLE `autor`
 -- Indices de la tabla `comentario`
 --
 ALTER TABLE `comentario`
-  ADD PRIMARY KEY (`id_comentario`);
+  ADD PRIMARY KEY (`id_comentario`),
+  ADD KEY `id_usuario` (`id_usuario`),
+  ADD KEY `id_libro` (`id_libro`);
 
 --
 -- Indices de la tabla `estado`
@@ -191,13 +195,39 @@ ALTER TABLE `genero`
 -- Indices de la tabla `libro`
 --
 ALTER TABLE `libro`
-  ADD PRIMARY KEY (`id_libro`);
+  ADD PRIMARY KEY (`id_libro`),
+  ADD KEY `id_estado` (`id_estado`),
+  ADD KEY `id_libro_genero` (`id_libro_genero`),
+  ADD KEY `id_libro_autor` (`id_libro_autor`);
+
+--
+-- Indices de la tabla `libro_autor`
+--
+ALTER TABLE `libro_autor`
+  ADD KEY `id_libro` (`id_libro`),
+  ADD KEY `id_autor` (`id_autor`);
+
+--
+-- Indices de la tabla `libro_genero`
+--
+ALTER TABLE `libro_genero`
+  ADD KEY `id_libro` (`id_libro`),
+  ADD KEY `id_genero` (`id_genero`);
 
 --
 -- Indices de la tabla `lista`
 --
 ALTER TABLE `lista`
-  ADD PRIMARY KEY (`id_lista`);
+  ADD PRIMARY KEY (`id_lista`),
+  ADD KEY `id_tipolista` (`id_tipolista`),
+  ADD KEY `id_usuario` (`id_usuario`);
+
+--
+-- Indices de la tabla `lista_libro`
+--
+ALTER TABLE `lista_libro`
+  ADD KEY `id_lista` (`id_lista`),
+  ADD KEY `id_libro` (`id_libro`);
 
 --
 -- Indices de la tabla `tipolista`
@@ -262,6 +292,51 @@ ALTER TABLE `tipolista`
 --
 ALTER TABLE `usuario`
   MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `comentario`
+--
+ALTER TABLE `comentario`
+  ADD CONSTRAINT `comentario_ibfk_1` FOREIGN KEY (`id_libro`) REFERENCES `libro` (`id_libro`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `comentario_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `libro`
+--
+ALTER TABLE `libro`
+  ADD CONSTRAINT `libro_ibfk_1` FOREIGN KEY (`id_estado`) REFERENCES `estado` (`id_estado`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `libro_autor`
+--
+ALTER TABLE `libro_autor`
+  ADD CONSTRAINT `libro_autor_ibfk_2` FOREIGN KEY (`id_autor`) REFERENCES `autor` (`id_autor`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `libro_autor_ibfk_3` FOREIGN KEY (`id_libro`) REFERENCES `libro` (`id_libro`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `libro_genero`
+--
+ALTER TABLE `libro_genero`
+  ADD CONSTRAINT `libro_genero_ibfk_1` FOREIGN KEY (`id_libro`) REFERENCES `libro` (`id_libro_genero`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `libro_genero_ibfk_2` FOREIGN KEY (`id_genero`) REFERENCES `genero` (`id_genero`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `lista`
+--
+ALTER TABLE `lista`
+  ADD CONSTRAINT `lista_ibfk_1` FOREIGN KEY (`id_tipolista`) REFERENCES `tipolista` (`id_tipolista`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `lista_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `lista_libro`
+--
+ALTER TABLE `lista_libro`
+  ADD CONSTRAINT `lista_libro_ibfk_1` FOREIGN KEY (`id_libro`) REFERENCES `libro` (`id_libro`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `lista_libro_ibfk_2` FOREIGN KEY (`id_lista`) REFERENCES `lista` (`id_lista`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

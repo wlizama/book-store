@@ -3,8 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.entities;
+package model;
 
+import model.Lista;
+import model.Genero;
+import model.Estado;
+import model.Comentario;
+import model.Autor;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;

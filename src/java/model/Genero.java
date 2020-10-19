@@ -3,20 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.entities;
+package model;
 
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -24,41 +24,46 @@ import javax.persistence.Table;
  * @author wilderlizama
  */
 @Entity
-@Table(name = "estado")
+@Table(name = "genero")
 @NamedQueries({
-    @NamedQuery(name = "Estado.findAll", query = "SELECT e FROM Estado e")})
-public class Estado implements Serializable {
+    @NamedQuery(name = "Genero.findAll", query = "SELECT g FROM Genero g")})
+public class Genero implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id_estado")
-    private Integer idEstado;
+    @Column(name = "id_genero")
+    private Integer idGenero;
     @Basic(optional = false)
     @Column(name = "nombre")
     private String nombre;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "estado")
+    @Basic(optional = false)
+    @Lob
+    @Column(name = "descripcion")
+    private String descripcion;
+    @ManyToMany(mappedBy = "generoList")
     private List<Libro> libroList;
 
-    public Estado() {
+    public Genero() {
     }
 
-    public Estado(Integer idEstado) {
-        this.idEstado = idEstado;
+    public Genero(Integer idGenero) {
+        this.idGenero = idGenero;
     }
 
-    public Estado(Integer idEstado, String nombre) {
-        this.idEstado = idEstado;
+    public Genero(Integer idGenero, String nombre, String descripcion) {
+        this.idGenero = idGenero;
         this.nombre = nombre;
+        this.descripcion = descripcion;
     }
 
-    public Integer getIdEstado() {
-        return idEstado;
+    public Integer getIdGenero() {
+        return idGenero;
     }
 
-    public void setIdEstado(Integer idEstado) {
-        this.idEstado = idEstado;
+    public void setIdGenero(Integer idGenero) {
+        this.idGenero = idGenero;
     }
 
     public String getNombre() {
@@ -67,6 +72,14 @@ public class Estado implements Serializable {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public List<Libro> getLibroList() {
@@ -80,18 +93,18 @@ public class Estado implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idEstado != null ? idEstado.hashCode() : 0);
+        hash += (idGenero != null ? idGenero.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Estado)) {
+        if (!(object instanceof Genero)) {
             return false;
         }
-        Estado other = (Estado) object;
-        if ((this.idEstado == null && other.idEstado != null) || (this.idEstado != null && !this.idEstado.equals(other.idEstado))) {
+        Genero other = (Genero) object;
+        if ((this.idGenero == null && other.idGenero != null) || (this.idGenero != null && !this.idGenero.equals(other.idGenero))) {
             return false;
         }
         return true;
@@ -99,7 +112,7 @@ public class Estado implements Serializable {
 
     @Override
     public String toString() {
-        return "model.Estado[ idEstado=" + idEstado + " ]";
+        return "model.Genero[ idGenero=" + idGenero + " ]";
     }
     
 }
