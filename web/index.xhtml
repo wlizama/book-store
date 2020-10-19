@@ -39,8 +39,7 @@
                     <div class="row">
                         <div class="col-lg-2 text-center text-lg-left">
                             <!-- logo -->
-                            <a href="/" class="site-logo">
-                                <!--<img src="resources/scripts//logo.png" alt="" />-->
+                            <a href="/books-store" class="site-logo">
                                 <img src="resources/images/logo.png" />
                             </a>
                         </div>
@@ -54,7 +53,7 @@
                             <div class="user-panel">
                                 <div class="up-item">
                                     <i class="flaticon-profile"></i>
-                                    <a href="/#">Ingresar</a> o <a href="/#">Crear cuenta</a>
+                                    <h:link outcome="/usuario/login.xhtml" value=" Ingresar o Crear cuenta" />
                                 </div>
                                 <div class="up-item">
                                     <div class="shopping-card">
@@ -80,9 +79,10 @@
                             </span>
                         </a>
                         <ul class="slicknav_nav slicknav_hidden" style="display: none;" aria-hidden="true" role="menu">
+                            <li><a href="/#" role="menuitem" tabindex="-1">eBooks</a></li>
                             <li class="slicknav_collapsed slicknav_parent">
                                 <a href="/#" role="menuitem" aria-haspopup="true" tabindex="-1" class="slicknav_item slicknav_row" style="outline: none;">
-                                    <a href="/#" tabindex="-1">Libros</a>
+                                    <a href="/#" tabindex="-1">Generos</a>
                                     <span class="slicknav_arrow"><i class="flaticon-right-arrow"></i></span>
                                 </a>
                                 <ul class="sub-menu slicknav_hidden" role="menu" style="display: none;" aria-hidden="true">
@@ -92,29 +92,15 @@
                                     <li><a href="/#" role="menuitem" tabindex="-1">Humanidades</a></li>
                                 </ul>
                             </li>
-                            <li><a href="/#" role="menuitem" tabindex="-1">eBooks</a></li>
-                            <li><a href="/#" role="menuitem" tabindex="-1">Nuevos</a></li>
-                            <li><a href="/#" role="menuitem" tabindex="-1">Recomendados</a></li>
-                            <li><a href="/#" role="menuitem" tabindex="-1">Más vendidos</a></li>
-                            <li class="slicknav_collapsed slicknav_parent">
-                                <a href="/#" role="menuitem" aria-haspopup="true" tabindex="-1" class="slicknav_item slicknav_row" style="outline: none;">
-                                    <a href="/#" tabindex="-1">Otros</a>
-                                    <span class="slicknav_arrow"><i class="flaticon-right-arrow"></i></span>
-                                </a>
-                                <ul class="sub-menu slicknav_hidden" role="menu" style="display: none;" aria-hidden="true">
-                                    <li><a href="/#" role="menuitem" tabindex="-1">Product Page</a></li>
-                                    <li><a href="/#" role="menuitem" tabindex="-1">Category Page</a></li>
-                                    <li><a href="/#" role="menuitem" tabindex="-1">Cart Page</a></li>
-                                    <li><a href="/#" role="menuitem" tabindex="-1">Checkout Page</a></li>
-                                    <li><a href="/#" role="menuitem" tabindex="-1">Contact Page</a></li>
-                                </ul>
-                            </li>
+                            <li><a href="/#" role="menuitem" tabindex="-1">Autores</a></li>
+                            <li><a href="/#" role="menuitem" tabindex="-1">Otros</a></li>
                         </ul>
                     </div>
                     <!-- menu -->
                     <ul class="main-menu">
+                        <li><a href="/#">eBooks</a></li>
                         <li>
-                            <a href="/#">Libros</a>
+                            <a href="/#">Generos</a>
                             <ul class="sub-menu">
                                 <li><a href="/#">Literatura</a></li>
                                 <li><a href="/#">Cuentos infantiles</a></li>
@@ -122,19 +108,8 @@
                                 <li><a href="/#">Humanidades</a></li>
                             </ul>
                         </li>
-                        <li><a href="/#">eBooks</a></li>
-                        <li><a href="/#">Nuevos</a></li>
-                        <li><a href="/#">Recomendados</a></li>
-                        <li><a href="/#">Más vendidos</a></li>
-                        <li><a href="/#">Otros</a>
-                            <ul class="sub-menu">
-                                <li><a href="/#">Product Page</a></li>
-                                <li><a href="/#">Category Page</a></li>
-                                <li><a href="/#">Cart Page</a></li>
-                                <li><a href="/#">Checkout Page</a></li>
-                                <li><a href="/#">Contact Page</a></li>
-                            </ul>
-                        </li>
+                        <li><a href="/#">Autores</a></li>
+                        <li><a href="/#">Otros</a></li>
                     </ul>
                 </div>
             </nav>
@@ -326,7 +301,7 @@
 	<section class="footer-section">
             <div class="container">
                 <div class="footer-logo text-center">
-                    <a href="#index.html">
+                    <a href="/books-store">
                         <img src="resources/images/logo-light.png" alt="" />
                     </a>
                 </div>
