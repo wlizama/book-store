@@ -28,33 +28,19 @@
     </h:head>
 
     <h:body>
-        <!-- Header section -->
-	<header class="header-section">
-            <div class="header-top">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-2 text-center text-lg-left">
-                            <!-- logo -->
-                            <a href="/books-store" class="site-logo">
-                                <img src="../resources/images/logo.png" />
-                            </a>
-                        </div>
-                       
-                    </div>
-                </div>
-            </div>
-        </header>
-        <!-- Header section end -->
+        <ui:insert name="header-nav">
+            <ui:include src="/layout/header-user.xhtml" />
+        </ui:insert>
         
         <section class="container w-50 py-5">
             <h:form class="form">
                 <h3 class="text-center text-info">Ingresar datos de usuario</h3>
                 <div class="form-group">
-                    <label for="nickname" class="text-info">Nickname</label><br />
+                    <label for="nickname">Nickname</label><br />
                     <h:inputText id="nickname" value="#{login.nickname}" class="form-control" />
                 </div>
                 <div class="form-group">
-                    <label for="password" class="text-info">Password:</label><br />
+                    <label for="password">Password:</label><br />
                     <h:inputSecret id="password" value="#{login.password}" class="form-control" />
                 </div>
                 
@@ -62,7 +48,8 @@
                     <h:commandButton action="#{login.validateUsernamePassword}" class="btn btn-primary w-50" value="Iniciar sesión" />
                 </div>
                 <div class="w-100 text-center my-4">
-                    ¿No tienes una cuenta? <a href="#" class="text-info">Registrate aqui</a>
+                    ¿No tienes una cuenta? <h:link outcome="/usuario/registro.xhtml" class="text-info" value="Registrate aqui" />
+                    
                 </div>
                 <ul class="list-group">
                     <ui:repeat value="#{facesContext.messageList}" var="facesMessage">
@@ -74,84 +61,9 @@
             </h:form>
         </section>
         
-        
-        <!-- Footer section -->
-	<section class="footer-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="footer-widget about-widget">
-                            <h2>About</h2>
-                            <p>Donec vitae purus nunc. Morbi faucibus erat sit amet congue mattis. Nullam frin-gilla faucibus urna, id dapibus erat iaculis ut. Integer ac sem.</p>
-                            <img src="../resources/images/cards.png" alt="" />
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="footer-widget about-widget">
-                            <h2>Blog</h2>
-                            <div class="fw-latest-post-widget">
-                                <div class="lp-item">
-                                    <div class="lp-thumb set-bg" data-setbg="../resources/images/mini-01.jpg" style="background-image: url('../resources/images/mini-01.jpg');"></div>
-                                    <div class="lp-content">
-                                        <h6>Arma tu Comic</h6>
-                                        <span>Sep 21, 2020</span>
-                                        <a href="##" class="readmore">Read More</a>
-                                    </div>
-                                </div>
-                                <div class="lp-item">
-                                    <div class="lp-thumb set-bg" data-setbg="../resources/images/mini-02.jpg" style="background-image: url('../resources/images/mini-02.jpg');"></div>
-                                    <div class="lp-content">
-                                        <h6>Ordena tu info</h6>
-                                        <span>Sep 21, 2020</span>
-                                        <a href="##" class="readmore">Read More</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="footer-widget contact-widget">
-                            <h2>Contacto</h2>
-                            <div class="con-info">
-                                <span>C.</span>
-                                <p>BookStore </p>
-                            </div>
-                            <div class="con-info">
-                                <span>B.</span>
-                                <p>Av. Peru 365 </p>
-                            </div>
-                            <div class="con-info">
-                                <span>T.</span>
-                                <p>+51 999 999 999</p>
-                            </div>
-                            <div class="con-info">
-                                <span>E.</span>
-                                <p>office@youremail.com</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="social-links-warp">
-                <div class="container">
-                    <div class="social-links">
-                        <a href="#" class="instagram"><i class="fa fa-instagram"></i><span>instagram</span></a>
-                        <a href="#" class="google-plus"><i class="fa fa-google-plus"></i><span>g+plus</span></a>
-                        <a href="#" class="pinterest"><i class="fa fa-pinterest"></i><span>pinterest</span></a>
-                        <a href="#" class="facebook"><i class="fa fa-facebook"></i><span>facebook</span></a>
-                        <a href="#" class="twitter"><i class="fa fa-twitter"></i><span>twitter</span></a>
-                        <a href="#" class="youtube"><i class="fa fa-youtube"></i><span>youtube</span></a>
-                        <a href="#" class="tumblr"><i class="fa fa-tumblr-square"></i><span>tumblr</span></a>
-                    </div>
-
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --> 
-                    <p class="text-white text-center mt-5">Copyright ©<script>document.write(new Date().getFullYear());</script>2020 All rights reserved | Developed by GRUPO 2</p>
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                </div>
-            </div>
-	</section>
-        <!-- Footer section end -->
-
+        <ui:insert name="footer">
+            <ui:include src="/layout/footer.xhtml" />
+        </ui:insert>
 
         <h:outputScript name="scripts/jquery-3.2.1.min.js"/>
         <h:outputScript name="scripts/bootstrap.min.js"/>

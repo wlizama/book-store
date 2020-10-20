@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    
+    <h:body>
+        <ui:composition> 
+            <!-- Page Preloder -->
+            <div id="preloder" style="display: none;">
+                <div class="loader" style="display: none;"></div>
+            </div>
+
+            <!-- Header section -->
+            <header class="header-section">
+                <div class="header-top">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-2 text-center text-lg-left">
+                                <!-- logo -->
+                                <a href="/books-store" class="site-logo">
+                                    <img src="resources/images/logo.png" />
+                                </a>
+                            </div>
+                            <div class="col-xl-6 col-lg-5">
+                                <form class="header-search-form">
+                                    <input type="text" placeholder="Buscar en BookStore ...." />
+                                    <button><i class="flaticon-search"></i></button>
+                                </form>
+                            </div>
+                            <div class="col-xl-4 col-lg-5">
+                                <div class="user-panel">
+                                    <div class="up-item">
+                                        <i class="flaticon-profile"></i>
+                                        <h:link outcome="/usuario/login.xhtml" value=" Ingresar o Crear cuenta" />
+                                    </div>
+                                    <div class="up-item">
+                                        <div class="shopping-card">
+                                            <i class="flaticon-bag"></i>
+                                            <span>0</span>
+                                        </div>
+                                        <a href="/#">Shopping Cart</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <nav class="main-navbar">
+                    <div class="container">
+                        <div class="slicknav_menu">
+                            <a href="/#" aria-haspopup="true" role="button" tabindex="0" class="slicknav_btn slicknav_collapsed" style="outline: none;">
+                                <span class="slicknav_menutxt">MENU</span>
+                                <span class="slicknav_icon">
+                                    <span class="slicknav_icon-bar"></span>
+                                    <span class="slicknav_icon-bar"></span>
+                                    <span class="slicknav_icon-bar"></span>
+                                </span>
+                            </a>
+                            <ul class="slicknav_nav slicknav_hidden" style="display: none;" aria-hidden="true" role="menu">
+                                <li><a href="/#" role="menuitem" tabindex="-1">eBooks</a></li>
+                                <li class="slicknav_collapsed slicknav_parent">
+                                    <a href="/#" role="menuitem" aria-haspopup="true" tabindex="-1" class="slicknav_item slicknav_row" style="outline: none;">
+                                        <a href="/#" tabindex="-1">Generos</a>
+                                        <span class="slicknav_arrow"><i class="flaticon-right-arrow"></i></span>
+                                    </a>
+                                    <ul class="sub-menu slicknav_hidden" role="menu" style="display: none;" aria-hidden="true">
+                                        <li><a href="/#" role="menuitem" tabindex="-1">Literatura</a></li>
+                                        <li><a href="/#" role="menuitem" tabindex="-1">Cuentos infantiles</a></li>
+                                        <li><a href="/#" role="menuitem" tabindex="-1">Formativos</a></li>
+                                        <li><a href="/#" role="menuitem" tabindex="-1">Humanidades</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="/#" role="menuitem" tabindex="-1">Autores</a></li>
+                                <li><a href="/#" role="menuitem" tabindex="-1">Otros</a></li>
+                            </ul>
+                        </div>
+                        <!-- menu -->
+                        <ul class="main-menu">
+                            <li><a href="/#">eBooks</a></li>
+                            <li>
+                                <a href="/#">Generos</a>
+                                <ul class="sub-menu">
+                                    <li><a href="/#">Literatura</a></li>
+                                    <li><a href="/#">Cuentos infantiles</a></li>
+                                    <li><a href="/#">Formativos</a></li>
+                                    <li><a href="/#">Humanidades</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="/#">Autores</a></li>
+                            <li><a href="/#">Otros</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            <!-- Header section end -->
+        
+        </ui:composition>	
+    </h:body>
+</html>
+
