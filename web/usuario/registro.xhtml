@@ -29,29 +29,34 @@
 
     <h:body>
         <ui:insert name="header-nav">
-            <ui:include src="/layout/header-user.xhtml" />
+            <ui:include src="/layout/header-simple.xhtml" />
         </ui:insert>
         
         <section class="container w-50 py-5">
             <h:form class="form">
-                <h3 class="text-center text-info">Ingresar datos de usuario</h3>
+                <h3 class="text-center text-info py-3">Registrarse como nuevo usuario</h3>
+                <div class="form-group">
+                    <label for="nombres">Nombres</label><br />
+                    <h:inputText id="nombres" value="#{usuarioController.usuario.nombres}" maxlength="250" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="apellidos">Apellidos</label><br />
+                    <h:inputText id="apellidos" value="#{usuarioController.usuario.apellidos}" maxlength="250" class="form-control" />
+                </div>
                 <div class="form-group">
                     <label for="nickname">Nickname</label><br />
-                    <h:inputText id="nickname" value="#{login.nickname}" class="form-control" />
+                    <h:inputText id="nickname" value="#{usuarioController.usuario.nickname}" maxlength="250" class="form-control" />
                 </div>
                 <div class="form-group">
                     <label for="password">Password:</label><br />
-                    <h:inputSecret id="password" value="#{login.password}" class="form-control" />
+                    <h:inputSecret id="password" value="#{usuarioController.usuario.password}" maxlength="250" class="form-control" />
                 </div>
                 
                 <div class="w-100 text-center">
-                    <h:commandButton action="#{login.validateUsernamePassword}" class="btn btn-primary w-50" value="Iniciar sesión" />
+                    <h:commandButton action="#{usuarioController.daoRegistrarUsuario}" class="btn btn-primary w-50" value="Registrar datos" />
                 </div>
-                <div class="w-100 text-center my-4">
-                    ¿No tienes una cuenta? <h:link outcome="/usuario/usuario.xhtml" class="text-info" value="Registrate aqui" />
-                    
-                </div>
-                <ul class="list-group">
+
+                <ul class="list-group mt-3">
                     <ui:repeat value="#{facesContext.messageList}" var="facesMessage">
                         <li class="list-group-item list-group-item-danger">
                             <h:outputText value="#{facesMessage.summary}" escape="false" />
