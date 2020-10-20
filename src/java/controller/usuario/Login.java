@@ -56,7 +56,7 @@ public class Login implements Serializable {
         this.nickname = nickname;
     }
     
-    public static boolean daoValidateUsuario(String nickname, String password) {
+    private static boolean daoValidateUsuario(String nickname, String password) {
         Connection con = null;
         PreparedStatement ps = null;
 
@@ -83,17 +83,18 @@ public class Login implements Serializable {
     //validate login
     public String validateUsernamePassword() {
         boolean valid = daoValidateUsuario(nickname, password);
+        System.out.println("valid:" + valid);
         if (valid) {
             HttpSession session = SessionManager.getSession();
             session.setAttribute("nickname", nickname);
-            return "userhome";
+            return "home?faces-redirect=true";
         } else {
             FacesContext.getCurrentInstance().addMessage(
                 null,
                 new FacesMessage(FacesMessage.SEVERITY_WARN,
-                    "Usuario y contraseña incorrecto",
+                    "Usuario o contraseña incorrecto",
                     "Por favor ingresar datos correctos"));
-            return "userlogin";
+            return "login";
         }
     }
 
@@ -101,7 +102,7 @@ public class Login implements Serializable {
     public String logout() {
             HttpSession session = SessionManager.getSession();
             session.invalidate();
-            return "userlogin";
+            return "login";
     }
     
 }

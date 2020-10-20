@@ -17,7 +17,7 @@ public class DataConnect {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://192.168.0.6:3306/cardb",
+                    "jdbc:mysql://192.168.0.6:3306/book_store",
                     "wilder",
                     "");
             return con;
