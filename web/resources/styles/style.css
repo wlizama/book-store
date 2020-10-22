@@ -2422,7 +2422,7 @@ ol {
 
 .w-bg-title {
     position: absolute;
-    height: 200px;
+    height: 280px;
     display: block;
     top: 0;
     bottom: 0;
@@ -2438,4 +2438,58 @@ ol {
     padding: .6em .5em;
     color: white;
     text-shadow: 0px 8px 4px #282828;
+}
+
+.w-label-genero {
+    border-radius: 10px;
+    display: inline-block;
+    margin: .5em 1.2em;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    transition: .2s all;
+    color: black;
+    font-size: 2em;
+    border: 2px solid #2196F3;
+    width: 250px
+}
+
+.w-label-genero:hover {
+    border: 2px solid #0078d8;
+    box-shadow: 0px 2px 5px #282828;
+}
+
+.w-autores {
+    border-radius: 10px;
+    display: inline-block;
+    margin: .5em 1.2em;
+    text-align: center;
+    transition: .2s all;
+    color: black;
+    font-size: 2em;
+    border: 2px solid #2196F3;
+    width: 250px;
+    padding: 10px;
+}
+
+.w-autores:hover {
+    border: 2px solid #0078d8;
+    box-shadow: 0px 2px 5px #282828;
+}
+
+.w-libros {
+    display: inline-flex;
+    margin: .5em 1.2em;
+    transition: .2s all;
+    color: black;
+    border: 2px solid #2196F3;
+    width: 45.5%;
+    padding: 10px;
+    vertical-align: top;
+    border-radius: 10px;
+}
+
+.w-libros:hover {
+    border: 2px solid #0078d8;
+    box-shadow: 0px 2px 5px #282828;
 }
