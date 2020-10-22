@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="description" content=""/>
+        <meta name="author" content=""/>
+        <link href="../resources/images/favicon.ico" rel="shortcut icon" />
+
+        <!-- Bootstrap core CSS -->
+        <h:outputStylesheet name="styles/bootstrap.min.css"/>
+        <h:outputStylesheet name="styles/font-awesome.min.css"/>
+        <h:outputStylesheet name="styles/flaticon.css"/>
+        <h:outputStylesheet name="styles/slicknav.min.css"/>
+        <h:outputStylesheet name="styles/jquery-ui.min.css"/>
+        <h:outputStylesheet name="styles/owl.carousel.min.css"/>
+        <h:outputStylesheet name="styles/animate.css"/>
+        <h:outputStylesheet name="styles/style.css"/>
+
+        <title>Book store - eBooks</title>
+        
+    </h:head>
+
+    <h:body>
+        <ui:insert name="header-nav">
+            <ui:include src="/layout/header-nav.xhtml" />
+        </ui:insert>
+        
+        
+        <div style="position: relative">
+            <div class="w-bg-title" style="background-image: url(https://blog.scielo.org/wp-content/uploads/2016/06/ebook.png);"></div>    
+        </div>
+        
+        <section class="container">
+            <h1 class="w-head">eBooks</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </section>
+        
+        <ui:insert name="footer">
+            <ui:include src="/layout/footer.xhtml" />
+        </ui:insert>
+
+        <h:outputScript name="scripts/jquery-3.2.1.min.js"/>
+        <h:outputScript name="scripts/bootstrap.min.js"/>
+        <h:outputScript name="scripts/jquery.slicknav.min.js" />
+	<h:outputScript name="scripts/owl.carousel.min.js" />
+	<h:outputScript name="scripts/jquery.nicescroll.min.js" />
+	<h:outputScript name="scripts/jquery.zoom.min.js" />
+	<h:outputScript name="scripts/jquery-ui.min.js" />
+	<h:outputScript name="scripts/main.js" />
+    </h:body>
+</html>

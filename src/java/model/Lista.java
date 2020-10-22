@@ -40,10 +40,10 @@ public class Lista implements Serializable {
     private List<Libro> libroList;
     @JoinColumn(name = "id_tipolista", referencedColumnName = "id_tipolista")
     @ManyToOne(optional = false)
-    private Tipolista tipolista;
+    private Tipolista idTipolista;
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
     @ManyToOne(optional = false)
-    private Usuario usuario;
+    private Usuario idUsuario;
 
     public Lista() {
     }
@@ -68,20 +68,20 @@ public class Lista implements Serializable {
         this.libroList = libroList;
     }
 
-    public Tipolista getTipolista() {
-        return tipolista;
+    public Tipolista getIdTipolista() {
+        return idTipolista;
     }
 
-    public void setTipolista(Tipolista tipolista) {
-        this.tipolista = tipolista;
+    public void setIdTipolista(Tipolista idTipolista) {
+        this.idTipolista = idTipolista;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public Usuario getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setIdUsuario(Usuario idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     @Override

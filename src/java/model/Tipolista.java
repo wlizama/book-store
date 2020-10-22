@@ -5,7 +5,6 @@
  */
 package model;
 
-import model.Lista;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -44,7 +43,7 @@ public class Tipolista implements Serializable {
     @Lob
     @Column(name = "descripcion")
     private String descripcion;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tipolista")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTipolista")
     private List<Lista> listaList;
 
     public Tipolista() {

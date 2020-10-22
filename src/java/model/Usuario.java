@@ -5,8 +5,6 @@
  */
 package model;
 
-import model.Lista;
-import model.Comentario;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -49,9 +47,9 @@ public class Usuario implements Serializable {
     @Basic(optional = false)
     @Column(name = "password")
     private String password;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
     private List<Lista> listaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
     private List<Comentario> comentarioList;
 
     public Usuario() {

@@ -20,7 +20,7 @@
                             <div class="col-lg-2 text-center text-lg-left">
                                 <!-- logo -->
                                 <a href="/books-store" class="site-logo">
-                                    <img src="resources/images/logo.png" />
+                                    <h:graphicImage library="images" name="logo.png" />
                                 </a>
                             </div>
                             <div class="col-xl-6 col-lg-5">
@@ -59,37 +59,16 @@
                                 </span>
                             </a>
                             <ul class="slicknav_nav slicknav_hidden" style="display: none;" aria-hidden="true" role="menu">
-                                <li><a href="/#" role="menuitem" tabindex="-1">eBooks</a></li>
-                                <li class="slicknav_collapsed slicknav_parent">
-                                    <a href="/#" role="menuitem" aria-haspopup="true" tabindex="-1" class="slicknav_item slicknav_row" style="outline: none;">
-                                        <a href="/#" tabindex="-1">Generos</a>
-                                        <span class="slicknav_arrow"><i class="flaticon-right-arrow"></i></span>
-                                    </a>
-                                    <ul class="sub-menu slicknav_hidden" role="menu" style="display: none;" aria-hidden="true">
-                                        <li><a href="/#" role="menuitem" tabindex="-1">Literatura</a></li>
-                                        <li><a href="/#" role="menuitem" tabindex="-1">Cuentos infantiles</a></li>
-                                        <li><a href="/#" role="menuitem" tabindex="-1">Formativos</a></li>
-                                        <li><a href="/#" role="menuitem" tabindex="-1">Humanidades</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="/#" role="menuitem" tabindex="-1">Autores</a></li>
-                                <li><a href="/#" role="menuitem" tabindex="-1">Otros</a></li>
+                                <li><h:link outcome="/general/ebooks.xhtml" value="eBooks" /></li>
+                                <li><h:link outcome="/general/generos.xhtml" value="Géneros" /></li>
+                                <li><h:link outcome="/general/autores.xhtml" value="Autores" /></li>
                             </ul>
                         </div>
                         <!-- menu -->
                         <ul class="main-menu">
-                            <li><a href="/#">eBooks</a></li>
-                            <li>
-                                <a href="/#">Generos</a>
-                                <ul class="sub-menu">
-                                    <li><a href="/#">Literatura</a></li>
-                                    <li><a href="/#">Cuentos infantiles</a></li>
-                                    <li><a href="/#">Formativos</a></li>
-                                    <li><a href="/#">Humanidades</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="/#">Autores</a></li>
-                            <li><a href="/#">Otros</a></li>
+                            <li><h:link outcome="/general/ebooks.xhtml" value="eBooks" /></li>
+                            <li><h:link outcome="/general/generos.xhtml" value="Géneros" /></li>
+                            <li><h:link outcome="/general/autores.xhtml" value="Autores" /></li>
                         </ul>
                     </div>
                 </nav>

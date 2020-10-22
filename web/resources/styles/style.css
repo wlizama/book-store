@@ -2418,3 +2418,24 @@ ol {
 		display: none;
 	}
 }
+
+
+.w-bg-title {
+    position: absolute;
+    height: 200px;
+    display: block;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: -2;
+    background-size: cover;
+    background-position: center;
+}
+
+.w-head {
+    font-size: 3.5em;
+    padding: .6em .5em;
+    color: white;
+    text-shadow: 0px 8px 4px #282828;
+}

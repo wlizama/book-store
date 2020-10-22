@@ -38,7 +38,7 @@ public class Estado implements Serializable {
     @Basic(optional = false)
     @Column(name = "nombre")
     private String nombre;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "estado")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEstado")
     private List<Libro> libroList;
 
     public Estado() {

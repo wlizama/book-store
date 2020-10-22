@@ -5,11 +5,6 @@
  */
 package model;
 
-import model.Lista;
-import model.Genero;
-import model.Estado;
-import model.Comentario;
-import model.Autor;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -65,17 +60,22 @@ public class Libro implements Serializable {
     @Column(name = "precio")
     private BigDecimal precio;
     @Basic(optional = false)
-    @Column(name = "id_libro_genero")
-    private int idLibroGenero;
+    @Lob
+    @Column(name = "url_portada")
+    private String urlPortada;
     @Basic(optional = false)
-    @Column(name = "id_libro_autor")
-    private int idLibroAutor;
+    @Lob
+    @Column(name = "url_ubicacion")
+    private String urlUbicacion;
     @JoinTable(name = "libro_genero", joinColumns = {
-        @JoinColumn(name = "id_libro", referencedColumnName = "id_libro_genero")}, inverseJoinColumns = {
+        @JoinColumn(name = "id_libro", referencedColumnName = "id_libro")}, inverseJoinColumns = {
         @JoinColumn(name = "id_genero", referencedColumnName = "id_genero")})
     @ManyToMany
     private List<Genero> generoList;
-    @ManyToMany(mappedBy = "libroList")
+    @JoinTable(name = "libro_autor", joinColumns = {
+        @JoinColumn(name = "id_libro", referencedColumnName = "id_libro")}, inverseJoinColumns = {
+        @JoinColumn(name = "id_autor", referencedColumnName = "id_autor")})
+    @ManyToMany
     private List<Autor> autorList;
     @JoinTable(name = "lista_libro", joinColumns = {
         @JoinColumn(name = "id_libro", referencedColumnName = "id_libro")}, inverseJoinColumns = {
@@ -84,8 +84,8 @@ public class Libro implements Serializable {
     private List<Lista> listaList;
     @JoinColumn(name = "id_estado", referencedColumnName = "id_estado")
     @ManyToOne(optional = false)
-    private Estado estado;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "libro")
+    private Estado idEstado;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idLibro")
     private List<Comentario> comentarioList;
 
     public Libro() {
@@ -95,14 +95,14 @@ public class Libro implements Serializable {
         this.idLibro = idLibro;
     }
 
-    public Libro(Integer idLibro, String titulo, String descripcion, Date fechaPublicacion, BigDecimal precio, int idLibroGenero, int idLibroAutor) {
+    public Libro(Integer idLibro, String titulo, String descripcion, Date fechaPublicacion, BigDecimal precio, String urlPortada, String urlUbicacion) {
         this.idLibro = idLibro;
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.fechaPublicacion = fechaPublicacion;
         this.precio = precio;
-        this.idLibroGenero = idLibroGenero;
-        this.idLibroAutor = idLibroAutor;
+        this.urlPortada = urlPortada;
+        this.urlUbicacion = urlUbicacion;
     }
 
     public Integer getIdLibro() {
@@ -145,20 +145,20 @@ public class Libro implements Serializable {
         this.precio = precio;
     }
 
-    public int getIdLibroGenero() {
-        return idLibroGenero;
+    public String getUrlPortada() {
+        return urlPortada;
     }
 
-    public void setIdLibroGenero(int idLibroGenero) {
-        this.idLibroGenero = idLibroGenero;
+    public void setUrlPortada(String urlPortada) {
+        this.urlPortada = urlPortada;
     }
 
-    public int getIdLibroAutor() {
-        return idLibroAutor;
+    public String getUrlUbicacion() {
+        return urlUbicacion;
     }
 
-    public void setIdLibroAutor(int idLibroAutor) {
-        this.idLibroAutor = idLibroAutor;
+    public void setUrlUbicacion(String urlUbicacion) {
+        this.urlUbicacion = urlUbicacion;
     }
 
     public List<Genero> getGeneroList() {
@@ -185,12 +185,12 @@ public class Libro implements Serializable {
         this.listaList = listaList;
     }
 
-    public Estado getEstado() {
-        return estado;
+    public Estado getIdEstado() {
+        return idEstado;
     }
 
-    public void setEstado(Estado estado) {
-        this.estado = estado;
+    public void setIdEstado(Estado idEstado) {
+        this.idEstado = idEstado;
     }
 
     public List<Comentario> getComentarioList() {

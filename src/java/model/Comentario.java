@@ -53,10 +53,10 @@ public class Comentario implements Serializable {
     private BigDecimal puntuacion;
     @JoinColumn(name = "id_libro", referencedColumnName = "id_libro")
     @ManyToOne(optional = false)
-    private Libro libro;
+    private Libro idLibro;
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
     @ManyToOne(optional = false)
-    private Usuario usuario;
+    private Usuario idUsuario;
 
     public Comentario() {
     }
@@ -104,20 +104,20 @@ public class Comentario implements Serializable {
         this.puntuacion = puntuacion;
     }
 
-    public Libro getLibro() {
-        return libro;
+    public Libro getIdLibro() {
+        return idLibro;
     }
 
-    public void setLibro(Libro libro) {
-        this.libro = libro;
+    public void setIdLibro(Libro idLibro) {
+        this.idLibro = idLibro;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public Usuario getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setIdUsuario(Usuario idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     @Override
