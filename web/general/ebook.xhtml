@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="description" content=""/>
+        <meta name="author" content=""/>
+        <link href="../resources/images/favicon.ico" rel="shortcut icon" />
+
+        <!-- Bootstrap core CSS -->
+        <h:outputStylesheet name="styles/bootstrap.min.css"/>
+        <h:outputStylesheet name="styles/font-awesome.min.css"/>
+        <h:outputStylesheet name="styles/flaticon.css"/>
+        <h:outputStylesheet name="styles/slicknav.min.css"/>
+        <h:outputStylesheet name="styles/jquery-ui.min.css"/>
+        <h:outputStylesheet name="styles/owl.carousel.min.css"/>
+        <h:outputStylesheet name="styles/animate.css"/>
+        <h:outputStylesheet name="styles/style.css"/>
+
+        <title>Book store - eBooks</title>
+        
+    </h:head>
+
+    <h:body>
+        <ui:insert name="header-nav">
+            <ui:include src="/layout/header-nav.xhtml" />
+        </ui:insert>
+        
+        
+        <div style="position: relative">
+            <div class="w-bg-title" style="background-image: url(https://blog.scielo.org/wp-content/uploads/2016/06/ebook.png);"></div>    
+        </div>
+        
+        <section class="container">
+            <h1 class="w-head">eBook</h1>
+            <div class="rounded bg-white p-2 shadow mb-4">
+                <h2 class="text-center py-4">#{libroController.libro.titulo}</h2>
+                <div class="row">
+                    <div class="col-4">
+                        <h:graphicImage value="#{libroController.libro.urlPortada}" style="width: 350px" />
+                    </div>
+                    <div class="col-8">
+                        <div><b>Precio:</b> S/ <h:outputText value="#{libroController.libro.precio}" /></div>
+                        <div><b>Fecha de publicación: </b><h:outputText value="#{libroController.libro.fechaPublicacion}" /></div>
+                        <div>
+                            <b>Genero(s): </b>
+                            <ui:repeat value="#{libroController.libro.generoList}" var="listagenero">
+                                <span class="badge badge-secondary">
+                                    <h:outputText value="#{listagenero.nombre}" />
+                                </span>
+                            </ui:repeat>
+                        </div>
+                        <div>
+                            <b>Autor(es): </b>
+                            <ui:repeat value="#{libroController.libro.autorList}" var="listaautor">
+                                <span class="badge badge-Light">
+                                    <h:outputText value="#{listaautor.nombres}" />
+                                </span>
+                            </ui:repeat>
+                        </div>
+                        <p>
+                            <h:outputText value="#{libroController.libro.descripcion}" />
+                        </p>
+                    </div>
+                </div>
+                
+                
+                <h4 class="text-secondary mt-4">Comentarios de los usuarios</h4>
+                <hr/>
+                <c:choose>
+                    <c:when test = "${libroController.libro.comentarioList.size() > 0}">
+                        <ui:repeat value="#{libroController.libro.comentarioList}" var="listacomentario">
+                            <div class="row">
+                                <div class="col-2 text-center">
+                                    <h:graphicImage value="http://imag.lecturalia.com/noimage_user.svg" style="width: 60px" />
+                                    <div>
+                                        <span class="badge badge-warning"><h:outputText value="#{listacomentario.puntuacion}" /></span>
+                                    </div>
+                                </div>
+                                <div class="col-9">
+                                    <h5><h:outputText value="#{listacomentario.idUsuario.nickname}" /></h5>
+                                    <small class="text-muted"><h:outputText value="#{listacomentario.fecha.toLocaleString()}" /></small>
+                                    <p><h:outputText value="#{listacomentario.comentario}" /></p>
+                                </div>
+                            </div>
+                            <hr/>
+                        </ui:repeat>
+                    </c:when>
+                    <c:otherwise>
+                        <p class="text-center">No hay comentarios aun</p>
+                    </c:otherwise>
+                </c:choose>
+            </div>
+            
+        </section>
+        
+        <ui:insert name="footer">
+            <ui:include src="/layout/footer.xhtml" />
+        </ui:insert>
+
+        <h:outputScript name="scripts/jquery-3.2.1.min.js"/>
+        <h:outputScript name="scripts/bootstrap.min.js"/>
+        <h:outputScript name="scripts/jquery.slicknav.min.js" />
+	<h:outputScript name="scripts/owl.carousel.min.js" />
+	<h:outputScript name="scripts/jquery.nicescroll.min.js" />
+	<h:outputScript name="scripts/jquery.zoom.min.js" />
+	<h:outputScript name="scripts/jquery-ui.min.js" />
+	<h:outputScript name="scripts/main.js" />
+    </h:body>
+</html>

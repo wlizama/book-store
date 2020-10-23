@@ -50,21 +50,20 @@
                     </div>
                 </h:form>
                 <ui:repeat value="#{libroController.daoListaLibros()}" var="listaLibros">
-                <a href="#" class="w-libros">
-                    <h:graphicImage value="#{listaLibros.urlPortada}" />
-                    <div class="p-2">
-                        <h4><h:outputText value="#{listaLibros.titulo}" /></h4>
-                        <div><b>Fecha de publicacion:</b> <h:outputText value="#{listaLibros.fechaPublicacion.toString()}" /></div>
-                        <div><b>Precio:</b> S/ <h:outputText value="#{listaLibros.precio}" /></div>
-                        <div><b>Descripcion:</b></div>
-                        <p>
-                            <h:outputText value="#{listaLibros.descripcion}" />
-                        </p>
-                    </div>
-                </a>
+                    <h:link class="w-libros" outcome="/general/ebook.xhtml?id_libro=#{listaLibros.idLibro}">
+                        <h:graphicImage value="#{listaLibros.urlPortada}" />
+                        <div class="p-2">
+                            <h4><h:outputText value="#{listaLibros.titulo}" /></h4>
+                            <div><b>Fecha de publicacion:</b> <h:outputText value="#{listaLibros.fechaPublicacion.toString()}" /></div>
+                            <div><b>Precio:</b> S/ <h:outputText value="#{listaLibros.precio}" /></div>
+                            <div><b>Descripcion:</b></div>
+                            <p>
+                                <h:outputText value="#{listaLibros.descripcion}" />
+                            </p>
+                        </div>
+                    </h:link>
                 </ui:repeat>
             </div>
-            
         </section>
         
         <ui:insert name="footer">
