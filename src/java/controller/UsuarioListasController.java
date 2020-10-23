@@ -30,7 +30,7 @@ import utils.SessionManager;
  */
 @ManagedBean
 @SessionScoped
-public class ListasController {
+public class UsuarioListasController {
     
     private int id_tipolista;
     private Tipolista tipolista;

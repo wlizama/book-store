@@ -35,31 +35,42 @@
         
         <section class="container  py-5">
             <h:form class="form">
-                <h3 class="text-center text-info">Libros de usuario</h3>
+                <h3 class="text-center">#{usuarioLibroController.libro.titulo}</h3>
                 <hr/>
                 <div class="row my-5">
-                    <c:choose>
-                        <c:when test = "${usuarioLibroController.daoListaLibros().size() > 0}">
-                            <ui:repeat value="#{usuarioLibroController.daoListaLibros()}" var="listaLibros">
-                                <h:link class="w-libros" outcome="/usuario/libro.xhtml?id_libro=#{listaLibros.idLibro}">
-                                    <h:graphicImage value="#{listaLibros.urlPortada}" style="width: 180px"/>
-                                    <div class="p-2">
-                                        <h4><h:outputText value="#{listaLibros.titulo}" /></h4>
-                                        <div><b>Fecha de publicacion:</b> <h:outputText value="#{listaLibros.fechaPublicacion.toString()}" /></div>
-                                        <div><b>Descripcion:</b></div>
-                                        <p>
-                                            <h:outputText value="#{listaLibros.descripcion}" />
-                                        </p>
-                                    </div>
-                                </h:link>
-                            </ui:repeat>
-                        </c:when>
-                        <c:otherwise>
-                            <div class="text-center w-100">
-                                <h:graphicImage value="https://cdn.dribbble.com/users/456158/screenshots/5099794/empty_state___bookings.png" style="width: 480px" />
+                    <div class="row">
+                        <div class="col-2"></div>
+                        <div class="col-4">
+                            <h:graphicImage value="#{usuarioLibroController.libro.urlPortada}" style="width: 350px" />
+                        </div>
+                        <div class="col-4">
+                            <div><b>Fecha de publicación: </b><h:outputText value="#{usuarioLibroController.libro.fechaPublicacion}" /></div>
+                            <div>
+                                <b>Genero(s): </b>
+                                <ui:repeat value="#{usuarioLibroController.libro.generoList}" var="listagenero">
+                                    <span class="badge badge-secondary">
+                                        <h:outputText value="#{listagenero.nombre}" />
+                                    </span>
+                                </ui:repeat>
                             </div>
-                        </c:otherwise>
-                    </c:choose>
+                            <div>
+                                <b>Autor(es): </b>
+                                <ui:repeat value="#{usuarioLibroController.libro.autorList}" var="listaautor">
+                                    <span class="badge badge-Light">
+                                        <h:outputText value="#{listaautor.nombres}" />
+                                    </span>
+                                </ui:repeat>
+                            </div>
+                            <p>
+                                <h:outputText value="#{usuarioLibroController.libro.descripcion}" />
+                            </p>
+                            <div>
+                                <h:commandButton action="#{loginController.validateUsernamePassword}" class="btn btn-success mr-3" value="Datos de libro" />
+                                <h:commandButton action="#{loginController.validateUsernamePassword}" class="btn btn-primary" value="Continuar lectura" />
+                            </div>
+                        </div>
+                        <div class="col-2"></div>
+                    </div>
                 </div>
             </h:form>
         </section>
