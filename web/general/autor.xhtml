@@ -23,7 +23,7 @@
         <h:outputStylesheet name="styles/animate.css"/>
         <h:outputStylesheet name="styles/style.css"/>
 
-        <title>Book store - Autores</title>
+        <title>Book store - Géneros</title>
         
     </h:head>
 
@@ -33,19 +33,24 @@
         </ui:insert>
         
         <div style="position: relative">
-            <div class="w-bg-title" style="background-image: url(https://www.omni-bus.com/n49/sites.google.com/site/omnibusrevistainterculturaln49/home/nuevo%20collage%20omb%2049.jpg);"></div>    
+            <div class="w-bg-title" style="background-image: url(http://3.bp.blogspot.com/-UleeLKOr4lQ/VbeVqOfvpPI/AAAAAAAAVmQ/lR351RcccQY/s1600/100-Libros-2.jpg);"></div>    
         </div>
         
         <section class="container">
-            <h1 class="w-head">Autores</h1>
+            <h1 class="w-head">Autor</h1>
              <div class="rounded bg-white p-2 shadow mb-4 text-center">
-               
-                <ui:repeat value="#{autorController.daoListaAutores()}" var="listaautor">
-                    <h:link class="w-autores" outcome="/general/autor.xhtml?id_autor=#{listaautor.idAutor}">
-                        <h:graphicImage value="https://www.inmosenna.com/wp-content/uploads/2018/07/avatar-user-business-man-399587fe24739d5a-512x512.png" style="width: 120px" />
+                <h2><h:outputText value="#{autorController.autor.nombres}" /></h2>
+                <ui:repeat value="#{autorController.daoListaLibrosXAutor()}" var="listaLibros">
+                    <h:link class="w-libros" outcome="/general/ebook.xhtml?id_libro=#{listaLibros.idLibro}">
+                        <h:graphicImage value="#{listaLibros.urlPortada}" />
                         <div class="p-2">
-                            <h5><h:outputText value="#{listaautor.nombres}" /></h5>
-                            <small class="text-muted"><h:outputText value="#{listaautor.alias}" /></small>
+                            <h4><h:outputText value="#{listaLibros.titulo}" /></h4>
+                            <div><b>Fecha de publicacion:</b> <h:outputText value="#{listaLibros.fechaPublicacion.toString()}" /></div>
+                            <div><b>Precio:</b> S/ <h:outputText value="#{listaLibros.precio}" /></div>
+                            <div><b>Descripcion:</b></div>
+                            <p>
+                                <h:outputText value="#{listaLibros.descripcion}" />
+                            </p>
                         </div>
                     </h:link>
                 </ui:repeat>
