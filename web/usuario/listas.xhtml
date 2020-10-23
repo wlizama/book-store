@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         
         <meta charset="utf-8"/>
@@ -23,7 +24,7 @@
         <h:outputStylesheet name="styles/animate.css"/>
         <h:outputStylesheet name="styles/style.css"/>
 
-        <title>Login de usuario</title>
+        <title>Listas de usuario</title>
         
     </h:head>
 
@@ -32,8 +33,73 @@
             <ui:include src="/layout/header-user.xhtml" />
         </ui:insert>
         
-        <section class="container w-50 py-5">
-            <h1>Listas de usuario</h1>
+        <section class="container py-5">
+            <h3 class="text-center text-info">Listas de usuario</h3>
+            <hr/>
+            <div class="row my-5">
+                <div class="col-4">
+                    <ul class="list-group">
+                        <c:choose>
+                            <c:when test = "${listasController.daoListaCantLibrosPorUsuario().size() > 0}">
+                                <h:form>
+                                    <ui:repeat value="#{listasController.daoListaCantLibrosPorUsuario()}" var="listausuario">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <h:commandLink action="#{listasController.daoMostarPorTipolista()}" value="#{listausuario.tipo_lista.nombre}">
+                                            <f:param name="id_tipolista" value="#{listausuario.tipo_lista.idTipolista}"></f:param>
+                                        </h:commandLink>
+                                        <span class="badge badge-primary badge-pill">
+                                            <h:outputText value="#{listausuario.cant_libros}" />
+                                        </span>
+                                    </li>
+                                </ui:repeat>
+                                </h:form>
+                            </c:when>
+                            <c:otherwise>
+                                <p class="text-center">Aun no tienes listas</p>
+                            </c:otherwise>
+                        </c:choose>
+                    </ul>
+                </div>
+                <div class="col-8">
+                    <c:choose>
+                        <c:when test = "${listasController.daoListaLibros().size() > 0}">
+                            <h4>
+                                <h:outputText value="Lista de #{listasController.tipolista.nombre}" />
+                            </h4>
+                            <p>
+                                <h:outputText value="#{listasController.tipolista.descripcion}" />
+                            </p>
+                            <ul class="list-group list-group-flush">
+                                <ui:repeat value="#{listasController.daoListaLibros()}" var="listalibros">
+                                    <li class="list-group-item">
+                                        <h:link outcome="/general/ebook.xhtml?id_libro=#{listalibros.idLibro}">
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <h:graphicImage value="#{listalibros.urlPortada}"  style="width: 200px"/>
+                                                </div>
+                                                <div class="col-8">
+                                                    <h4><h:outputText value="#{listalibros.titulo}" /></h4>
+                                                    <div><b>Fecha de publicacion:</b> <h:outputText value="#{listalibros.fechaPublicacion.toString()}" /></div>
+                                                    <div><b>Descripcion:</b></div>
+                                                    <p>
+                                                        <h:outputText value="#{listalibros.descripcion}" />
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </h:link>
+                                    </li>
+                                </ui:repeat>
+                            </ul>
+                        </c:when>
+                        <c:otherwise>
+                            <div class="text-center">
+                                <h:graphicImage value="https://cdn.dribbble.com/users/456158/screenshots/5099794/empty_state___bookings.png" style="width: 480px" />
+                            </div>
+                            
+                        </c:otherwise>
+                    </c:choose>
+                </div>
+            </div>
         </section>
         
         <ui:insert name="footer">
