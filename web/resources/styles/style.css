@@ -2489,6 +2489,11 @@ ol {
     border-radius: 10px;
 }
 
+.w-libros img {
+    width: 200px;
+    height: auto;
+}
+
 .w-libros:hover {
     border: 2px solid #0078d8;
     box-shadow: 0px 2px 5px #282828;
