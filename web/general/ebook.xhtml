@@ -79,13 +79,13 @@
                         <ui:repeat value="#{libroController.libro.comentarioList}" var="listacomentario">
                             <div class="row">
                                 <div class="col-2 text-center">
-                                    <h:graphicImage value="http://imag.lecturalia.com/noimage_user.svg" style="width: 60px" />
+                                    <h:graphicImage value="https://ui-avatars.com/api/?size=128&amp;name=#{listacomentario.idUsuario.nombres}" style="width: 60px" />
                                     <div>
                                         <span class="badge badge-warning"><h:outputText value="#{listacomentario.puntuacion}" /></span>
                                     </div>
                                 </div>
                                 <div class="col-9">
-                                    <h5><h:outputText value="#{listacomentario.idUsuario.nickname}" /></h5>
+                                    <h5><h:outputText value="#{listacomentario.idUsuario.nombres}" /></h5>
                                     <small class="text-muted"><h:outputText value="#{listacomentario.fecha.toLocaleString()}" /></small>
                                     <p><h:outputText value="#{listacomentario.comentario}" /></p>
                                 </div>

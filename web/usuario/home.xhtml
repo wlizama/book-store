@@ -36,17 +36,25 @@
             
             <h:form class="form">
                 <h3 class="text-center text-info py-4">Datos de usuario</h3>
-                <div class="form-group">
-                    <label for="nickname">Nickname</label><br />
-                    <h:inputText id="nickname" readonly="true" value="#{usuarioController.usuario.nickname}" class="form-control" />
-                </div>
-                <div class="form-group">
-                    <label for="nombres">Nombres</label><br />
-                    <h:inputText id="nombres" readonly="true" value="#{usuarioController.usuario.nombres}" class="form-control" />
-                </div>
-                <div class="form-group">
-                    <label for="apellidos">Apellidos</label><br />
-                    <h:inputText id="apellidos" readonly="true" value="#{usuarioController.usuario.apellidos}" class="form-control" />
+                <hr/>
+                <div class="row my-5">
+                    <div class="col-4">
+                        <h:graphicImage value="https://ui-avatars.com/api/?size=320&amp;name=#{usuarioController.usuario.nombres}" style="width: 350px" />
+                    </div>
+                    <div class="col-8">
+                        <div class="form-group">
+                            <label for="nickname">Nickname</label><br />
+                            <h:inputText id="nickname" readonly="true" value="#{usuarioController.usuario.nickname}" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="nombres">Nombres</label><br />
+                            <h:inputText id="nombres" readonly="true" value="#{usuarioController.usuario.nombres}" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="apellidos">Apellidos</label><br />
+                            <h:inputText id="apellidos" readonly="true" value="#{usuarioController.usuario.apellidos}" class="form-control" />
+                        </div>
+                    </div>
                 </div>
             </h:form>
         </section>

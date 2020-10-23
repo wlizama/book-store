@@ -42,7 +42,7 @@
                
                 <ui:repeat value="#{autorController.daoListaAutores()}" var="listaautor">
                     <h:link class="w-autores" outcome="/general/autor.xhtml?id_autor=#{listaautor.idAutor}">
-                        <h:graphicImage value="https://www.inmosenna.com/wp-content/uploads/2018/07/avatar-user-business-man-399587fe24739d5a-512x512.png" style="width: 120px" />
+                        <h:graphicImage value="https://ui-avatars.com/api/?size=320&amp;rounded=true&amp;background=212529&amp;color=49CC06&amp;name=#{listaautor.nombres}" style="width: 120px" />
                         <div class="p-2">
                             <h5><h:outputText value="#{listaautor.nombres}" /></h5>
                             <small class="text-muted"><h:outputText value="#{listaautor.alias}" /></small>

@@ -34,35 +34,44 @@
         
         <section class="container w-50 py-5">
             <h:form class="form">
-                <h3 class="text-center text-info py-3">Registrarse como nuevo usuario</h3>
-                <div class="form-group">
-                    <label for="nombres">Nombres</label><br />
-                    <h:inputText id="nombres" value="#{usuarioController.usuario.nombres}" maxlength="250" class="form-control" />
-                </div>
-                <div class="form-group">
-                    <label for="apellidos">Apellidos</label><br />
-                    <h:inputText id="apellidos" value="#{usuarioController.usuario.apellidos}" maxlength="250" class="form-control" />
-                </div>
-                <div class="form-group">
-                    <label for="nickname">Nickname</label><br />
-                    <h:inputText id="nickname" value="#{usuarioController.usuario.nickname}" maxlength="250" class="form-control" />
-                </div>
-                <div class="form-group">
-                    <label for="password">Password:</label><br />
-                    <h:inputSecret id="password" value="#{usuarioController.usuario.password}" maxlength="250" class="form-control" />
-                </div>
-                
-                <div class="w-100 text-center">
-                    <h:commandButton action="#{usuarioController.daoRegistrarUsuario}" class="btn btn-primary w-50" value="Registrar datos" />
-                </div>
+                <h2 class="text-center text-info py-3">Registrarse como nuevo usuario</h2>
+                <hr/>
+                <div class="row my-5">
+                    <div class="col-4">
+                        <h:graphicImage value="https://icon-library.com/images/add_user1-512.png" style="width: 350px" />
+                    </div>
+                    <div class="col-8">
+                        <div class="form-group">
+                            <label for="nombres">Nombres</label><br />
+                            <h:inputText id="nombres" value="#{usuarioController.usuario.nombres}" maxlength="250" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="apellidos">Apellidos</label><br />
+                            <h:inputText id="apellidos" value="#{usuarioController.usuario.apellidos}" maxlength="250" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="nickname">Nickname</label><br />
+                            <h:inputText id="nickname" value="#{usuarioController.usuario.nickname}" maxlength="250" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label><br />
+                            <h:inputSecret id="password" value="#{usuarioController.usuario.password}" maxlength="250" class="form-control" />
+                        </div>
 
-                <ul class="list-group mt-3">
-                    <ui:repeat value="#{facesContext.messageList}" var="facesMessage">
-                        <li class="list-group-item list-group-item-danger">
-                            <h:outputText value="#{facesMessage.summary}" escape="false" />
-                        </li>
-                    </ui:repeat>
-                </ul>
+                        <div class="w-100 text-center">
+                            <h:link outcome="/index.htmlx" value="Cancelar" class="mr-5" />
+                            <h:commandButton action="#{usuarioController.daoRegistrarUsuario}" class="btn btn-primary w-50" value="Registrar datos" />
+                        </div>
+
+                        <ul class="list-group mt-3">
+                            <ui:repeat value="#{facesContext.messageList}" var="facesMessage">
+                                <li class="list-group-item list-group-item-danger">
+                                    <h:outputText value="#{facesMessage.summary}" escape="false" />
+                                </li>
+                            </ui:repeat>
+                        </ul>
+                    </div>
+                </div>
             </h:form>
         </section>
         
