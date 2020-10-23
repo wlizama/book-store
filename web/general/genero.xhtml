@@ -37,14 +37,21 @@
         </div>
         
         <section class="container">
-            <h1 class="w-head">Géneros</h1>
+            <h1 class="w-head">Género</h1>
              <div class="rounded bg-white p-2 shadow mb-4 text-center">
-                <ui:repeat value="#{generoController.daoListaGeneros()}" var="listagenero">
-                    <h:link class="w-label-genero" outcome="/general/genero.xhtml?id_genero=#{listagenero.idGenero}">
-                        <h4 class="py-3 border-bottom"><h:outputText value="#{listagenero.nombre}" /></h4>
-                        <p class="p-2">
-                            <h:outputText value="#{listagenero.descripcion}" />
-                        </p>
+                <h2><h:outputText value="#{generoController.genero.nombre}" /></h2>
+                <ui:repeat value="#{generoController.daoListaLibrosXGenero()}" var="listaLibros">
+                    <h:link class="w-libros" outcome="/general/ebook.xhtml?id_libro=#{listaLibros.idLibro}">
+                        <h:graphicImage value="#{listaLibros.urlPortada}" />
+                        <div class="p-2">
+                            <h4><h:outputText value="#{listaLibros.titulo}" /></h4>
+                            <div><b>Fecha de publicacion:</b> <h:outputText value="#{listaLibros.fechaPublicacion.toString()}" /></div>
+                            <div><b>Precio:</b> S/ <h:outputText value="#{listaLibros.precio}" /></div>
+                            <div><b>Descripcion:</b></div>
+                            <p>
+                                <h:outputText value="#{listaLibros.descripcion}" />
+                            </p>
+                        </div>
                     </h:link>
                 </ui:repeat>
             </div>

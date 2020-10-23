@@ -2444,12 +2444,12 @@ ol {
     border-radius: 10px;
     display: inline-block;
     margin: .5em 1.2em;
-    height: 100px;
+    /*height: 100px;*/
     line-height: 100px;
     text-align: center;
     transition: .2s all;
     color: black;
-    font-size: 2em;
+    /*font-size: 2em;*/
     border: 2px solid #2196F3;
     width: 250px
 }

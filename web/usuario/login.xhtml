@@ -37,15 +37,15 @@
                 <h3 class="text-center text-info">Ingresar datos de usuario</h3>
                 <div class="form-group">
                     <label for="nickname">Nickname</label><br />
-                    <h:inputText id="nickname" value="#{login.nickname}" class="form-control" />
+                    <h:inputText id="nickname" value="#{loginController.nickname}" class="form-control" />
                 </div>
                 <div class="form-group">
                     <label for="password">Password:</label><br />
-                    <h:inputSecret id="password" value="#{login.password}" class="form-control" />
+                    <h:inputSecret id="password" value="#{loginController.password}" class="form-control" />
                 </div>
                 
                 <div class="w-100 text-center">
-                    <h:commandButton action="#{login.validateUsernamePassword}" class="btn btn-primary w-50" value="Iniciar sesión" />
+                    <h:commandButton action="#{loginController.validateUsernamePassword}" class="btn btn-primary w-50" value="Iniciar sesión" />
                 </div>
                 <div class="w-100 text-center my-4">
                     ¿No tienes una cuenta? <h:link outcome="/usuario/registro.xhtml" class="text-info" value="Registrate aqui" />
