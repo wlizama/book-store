@@ -21,6 +21,8 @@ import javax.servlet.http.HttpSession;
 import model.Autor;
 import model.Genero;
 import model.Libro;
+import model.LibroTipoLista;
+import model.Tipolista;
 import utils.DataConnect;
 import utils.SessionManager;
 
@@ -33,6 +35,8 @@ import utils.SessionManager;
 public class UsuarioLibroController {
     
     private Libro libro;
+    
+    private LibroTipoLista libro_tipo_lista;
 
     public Libro getLibro() {
         return libro;
@@ -40,6 +44,14 @@ public class UsuarioLibroController {
 
     public void setLibro(Libro libro) {
         this.libro = libro;
+    }
+
+    public LibroTipoLista getLibro_tipo_lista() {
+        return libro_tipo_lista;
+    }
+
+    public void setLibro_tipo_lista(LibroTipoLista libro_tipo_lista) {
+        this.libro_tipo_lista = libro_tipo_lista;
     }
     
     
@@ -76,6 +88,7 @@ public class UsuarioLibroController {
                         
                         daoListaGenerosXLibro(Integer.parseInt(pId_libro));
                         daoListaAutoresXLibro(Integer.parseInt(pId_libro));
+                        daoLibroTipoLista(Integer.parseInt(pId_libro));
                     }
                 }
                 else {
@@ -197,6 +210,73 @@ public class UsuarioLibroController {
         finally {
             DataConnect.close(con);
         }
+    }
+    
+    public void daoLibroTipoLista(int id_libro) {
+        Connection con = null;
+        CallableStatement cs = null;
+        
+        try {
+            
+            HttpSession session = SessionManager.getSession();
+            String nickname = session.getAttribute("nickname").toString();
+
+            con = DataConnect.getConnection();
+            cs = con.prepareCall("{call spTipoListaLibroPorUsuario (?, ?)}");
+            cs.setString(1, nickname);
+            cs.setInt(2, id_libro);
+            
+            cs.execute();
+            
+            ResultSet rs = cs.getResultSet();
+
+            while(rs.next()) {
+                setLibro_tipo_lista(new LibroTipoLista(
+                    id_libro,
+                    new Tipolista(
+                        rs.getInt("id_tipolista"),
+                        rs.getString("nombre"),
+                        rs.getString("descripcion")
+                    )
+                ));
+            }
+        } catch (SQLException ex) {
+            System.out.println("daoListaLibros error: " + ex.getMessage());
+        }
+        finally {
+            DataConnect.close(con);
+        }
+    }
+    
+    
+    public List<Tipolista> daoListaTiposLista() {
+        Connection con = null;
+        PreparedStatement ps = null;
+        
+        List<Tipolista> ltlista = new ArrayList<>(); 
+        
+        try {
+            con = DataConnect.getConnection();
+            ps = con.prepareStatement("SELECT * FROM tipolista");
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Tipolista tl = new Tipolista(
+                    rs.getInt("id_tipolista"),
+                    rs.getString("nombre"),
+                    rs.getString("descripcion")
+                );
+                ltlista.add(tl);
+            }
+        } catch (SQLException ex) {
+            System.out.println("init error: " + ex.getMessage());
+        }
+        finally {
+            DataConnect.close(con);
+        }
+        
+        return ltlista;
     }
     
 }

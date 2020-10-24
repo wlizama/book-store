@@ -72,7 +72,7 @@
                             <ul class="list-group list-group-flush">
                                 <ui:repeat value="#{usuarioListasController.daoListaLibros()}" var="listalibros">
                                     <li class="list-group-item">
-                                        <h:link outcome="/general/ebook.xhtml?id_libro=#{listalibros.idLibro}">
+                                        <h:link outcome="/usuario/libro.xhtml?id_libro=#{listalibros.idLibro}">
                                             <div class="row">
                                                 <div class="col-4">
                                                     <h:graphicImage value="#{listalibros.urlPortada}"  style="width: 200px"/>

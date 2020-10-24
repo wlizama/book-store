@@ -65,8 +65,7 @@
                                 <h:outputText value="#{usuarioLibroController.libro.descripcion}" />
                             </p>
                             <div>
-                                <h:commandButton action="#{loginController.validateUsernamePassword}" class="btn btn-success mr-3" value="Datos de libro" />
-                                
+                               
                                 <h:link outcome="/usuario/libro_lectura.xhtml?id_libro=#{usuarioLibroController.libro.idLibro}" value="Continuar lectura" class="btn btn-primary" />
                             </div>
                         </div>
@@ -75,7 +74,7 @@
                 </div>
             </h:form>
         </section>
-        
+
         <ui:insert name="footer">
             <ui:include src="/layout/footer.xhtml" />
         </ui:insert>
